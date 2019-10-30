@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="mvc" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="ft" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html>
@@ -51,13 +52,15 @@
 							<c:forEach var="c" items="${sizes}">
 								<div class="form-check-inline">
 									<c:if test="${ not empty sizeCheck }">
-										<c:forEach var="s" items="${sizeCheck}">
+										<c:forEach var="s" items="${sizeCheck}" end="${lenght }" varStatus="status">
 											<c:if test="${c == s}">
 												<input checked="checked" type="checkbox" name="size"
 													value="${c}" />${c}
+													<c:set  var="{status.index}" value="${lenght}"/>
 											</c:if>
 											<c:if test="${c != s}">
 												<input type="checkbox" name="size" value="${c}" />${c}
+												<c:set  var="s" value="${status.last}"/>
 											</c:if>
 										</c:forEach>
 									</c:if>

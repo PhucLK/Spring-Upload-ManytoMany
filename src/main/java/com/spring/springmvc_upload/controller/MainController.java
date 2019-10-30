@@ -150,6 +150,7 @@ public class MainController {
 			model.addAttribute("sizes", sizes);
 
 			model.addAttribute("sizeCheck", String);
+			model.addAttribute("lenght", String.size());
 			model.addAttribute("submit", "Edit Product");
 			return "product-form";
 		} else {
